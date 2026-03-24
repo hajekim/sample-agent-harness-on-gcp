@@ -103,6 +103,8 @@ adk deploy agent_engine agents \
   --validate-agent-import
 ```
 
+![](img/img-00.png)
+
 ---
 
 ## 🔍 6. Observability
@@ -126,6 +128,8 @@ OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=true
 본 배포된 에이전트(`enterprise_ralph_loop`)는 단순한 질의응답(Q&A) 챗봇이 아닙니다. **"복잡한 목표를 스스로 쪼개고 검증하며 완수하는 자율 오케스트레이터"** 역할을 수행합니다.
 
 에이전트가 성공적으로 배포되었다면, 아래의 프롬프트들을 입력하여 **Planner → Worker → Checker**로 이어지는 컴파운딩 루프를 직접 테스트해 보세요.
+
+![](img/img-01.png)
 
 ### 시나리오 A: SRE 장애 조사 (자동화된 문제 해결)
 > "최근 결제 API(Payment API)에서 500 내부 서버 에러가 급증하고 있다는 알람이 발생했어. 이 문제를 해결하기 위해 어떤 지표를 확인해야 하는지, 그리고 임시 조치(Mitigation)부터 근본 원인 파악까지의 전체 조사 과정을 수행해 줘."
