@@ -3,6 +3,7 @@
 env/
 .env
 agents/.env
+.gitignore
 
 # Python
 __pycache__/
