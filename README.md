@@ -1,4 +1,4 @@
-# Enterprise AI Agent Harness Sample (Google Cloud)
+# Sample Enterprise AI Agent Harness on Google Cloud
 
 이 프로젝트는 **Google AI 에이전트 아키텍처 및 엔터프라이즈 개발 가이드** 를 기반으로 구축된 샘플 에이전트 시스템입니다. 조직 수준에서 확장 가능하고 안전한 AI 에이전트 운영을 위한 표준 구조와 코드 레벨의 구현 패턴을 제공합니다.
 
