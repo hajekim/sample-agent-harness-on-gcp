@@ -1,0 +1,19 @@
+[project]
+name = "ai-harness-gcp-sample"
+version = "0.1.0"
+description = "Enterprise AI Agent Harness Sample for Google Cloud"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-genai",
+    "google-adk",
+    "pydantic",
+    "pyyaml",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["agents", "tools"]

@@ -1,0 +1,22 @@
+steps:
+  # 1. 테스트 및 평가 (Compounding Loop)
+  - name: 'python:3.10'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install -r requirements.txt
+        pytest tests/
+
+  # 2. 골든 데이터셋 기반 LLM-as-a-judge 평가
+  - name: 'python:3.10'
+    entrypoint: 'python'
+    args: ['eval/run_eval.py']
+
+  # 3. Agent Engine 배포
+  - name: 'google/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        adk deploy agent_engine --project ${PROJECT_ID}
