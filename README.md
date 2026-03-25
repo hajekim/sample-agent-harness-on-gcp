@@ -4,7 +4,7 @@
 
 ---
 
-## 💡 1. 핵심 기술 컨셉 (Core Concepts)
+## 💡 1. 핵심 기술 컨셉
 
 ### 1.1. 모델 하네스 (Model Harness)
 단순한 LLM 호출 코드가 아니라 모델을 안전하게 감싸는 **소프트웨어 비계(Scaffolding)** 역할을 합니다.
@@ -46,7 +46,7 @@
 
 ---
 
-## 🚀 4. 배포 및 테스트 가이드 (Deployment & Testing)
+## 🚀 4. 배포 및 테스트 가이드
 
 사용자의 상황에 따라 세 가지 배포 방식을 제공합니다. 시작하기 전에 프로젝트를 클론하고 의존성을 설치하세요.
 
@@ -76,7 +76,7 @@ export PROJECT_ID="YOUR_PROJECT_ID"
 export REGION="us-central1"
 ```
 
-### 방식 A. ADK CLI 배포 (로컬 개발 및 퀵 테스트)
+### 방식 A. ADK CLI 배포 - 로컬 개발 및 퀵 테스트
 가장 빠르고 간편한 방법으로, 개발자가 로컬에서 즉시 에이전트를 클라우드에 띄워 테스트할 때 적합합니다.
 
 *   **특징**: ADK가 내부적으로 패키징과 프로비저닝을 한 번에 수행합니다.
@@ -88,7 +88,7 @@ export REGION="us-central1"
       --validate-agent-import
     ```
 
-### 방식 B. Terraform GitOps 배포 (엔터프라이즈 표준) ⭐️
+### 방식 B. Terraform GitOps 배포 - 엔터프라이즈 표준 ⭐️
 인프라의 변경 사항을 코드로 관리(IaC)하고, 빌드 아티팩트(Golden Artifact)의 불변성을 보장하는 방식입니다. 실제 운영 환경에 가장 권장됩니다.
 
 *   **특징**: 빌드(CI)와 배포(CD)가 분리됩니다. Terraform이 환경 변수(`global` 리전 등)를 안전하게 주입합니다.
@@ -103,7 +103,7 @@ export REGION="us-central1"
     terraform apply -var="project_id=$PROJECT_ID" -var="region=$REGION"
     ```
 
-### 방식 C. Cloud Build 자동 배포 (완전 자동화)
+### 방식 C. Cloud Build 자동 배포 - 완전 자동화
 GitHub 푸시와 연동하여 테스트, 평가, 배포를 한 번에 수행하는 파이프라인입니다.
 
 *   **특징**: `eval/run_eval.py`를 통한 품질 검증을 통과해야만 배포가 진행됩니다.
