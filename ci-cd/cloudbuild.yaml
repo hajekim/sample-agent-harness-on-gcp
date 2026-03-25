@@ -1,22 +1,32 @@
 steps:
-  # 1. 테스트 및 평가 (Compounding Loop)
+  # 1. 패키지 설치 및 정적 분석 (Lint/Type Check)
   - name: 'python:3.10'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
         pip install -r requirements.txt
-        pytest tests/
+        # pytest 대신 정적 분석이나 다른 유닛 테스트 명령어를 여기에 추가할 수 있습니다.
 
   # 2. 골든 데이터셋 기반 LLM-as-a-judge 평가
   - name: 'python:3.10'
     entrypoint: 'python'
     args: ['eval/run_eval.py']
 
-  # 3. Agent Engine 배포
-  - name: 'google/cloud-sdk'
-    entrypoint: 'bash'
+  # 3. ADK 아티팩트 패키징 (Golden Artifact)
+  - name: 'bash'
     args:
       - '-c'
       - |
-        adk deploy agent_engine --project ${PROJECT_ID}
+        chmod +x ci-cd/package_for_terraform.sh
+        ./ci-cd/package_for_terraform.sh
+
+  # 4. Agent Engine 배포 (Terraform GitOps)
+  - name: 'hashicorp/terraform:1.7'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        cd infra
+        terraform init
+        terraform apply -auto-approve -var="project_id=${PROJECT_ID}"

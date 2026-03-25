@@ -29,25 +29,23 @@ def escalate_issue(reason: str, tool_context: ToolContext) -> str:
     return f"Loop terminated by Checker. Reason: {reason}"
 
 # 3. ADK 기반 에이전트 정의
-# Note: us-central1 리전의 안정적인 API 지원을 위해 샘플 코드에서는 2.5 계열을 기본값으로 사용합니다.
-# (Gemini 3 Preview가 특정 리전(Global)에서만 제공되는 제약 방지)
 planner = Agent(
     name="planner",
-    model="gemini-2.5-pro",
+    model="gemini-3-pro-preview",
     instruction=PLANNER_INSTRUCTION,
     output_key="plan"
 )
 
 worker = Agent(
     name="worker",
-    model="gemini-2.5-flash",
+    model="gemini-3-flash-preview",
     instruction=WORKER_INSTRUCTION,
     output_key="execution_result"
 )
 
 checker = Agent(
     name="checker",
-    model="gemini-2.5-flash",
+    model="gemini-3-flash-preview",
     instruction=CHECKER_INSTRUCTION,
     tools=[escalate_issue]
 )

@@ -18,8 +18,7 @@ class ModelHarness:
             project=project_id or os.environ.get("GOOGLE_CLOUD_PROJECT"),
             location=location,
         )
-        # Note: us-central1 리전의 안정적인 API 지원을 위해 2.5-flash를 사용합니다.
-        self.model_id = "gemini-2.5-flash"
+        self.model_id = "gemini-3-flash-preview"
 
     def generate(self, prompt: str, system_instruction: str = None) -> AgentResponse:
         """구조화된 추론 수행"""

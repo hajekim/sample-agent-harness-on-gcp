@@ -1,0 +1,35 @@
+# Environments
+.venv/
+env/
+.env
+agents/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# ADK & Agent Engine
+agents_tmp*/
+.agent_state.json
+*.pkl
+
+# Build & Dist
+build/
+dist/
+*.egg-info/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+infra/source.tar.gz
+*.tfvars
+infra/terraform.tfvars
+infra/terraform.tfstate*
+infra/.terraform*
+
+# macOS
+.DS_Store

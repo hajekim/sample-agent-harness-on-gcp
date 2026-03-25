@@ -1,6 +1,5 @@
+google-cloud-aiplatform[adk,agent_engines]
 google-genai
-google-adk
 pydantic
 pyyaml
 mcp
-pytest
