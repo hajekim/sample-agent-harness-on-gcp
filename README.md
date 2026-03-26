@@ -20,9 +20,9 @@
 
 ## 🏛️ 2. 아키텍처 레이어
 
-- **Orchestration Layer**: `agents/agent.py` (ADK Native Loop)
+- **Orchestration Layer**: `agents/agent.py`, `agents/ralph_loop.py` (ADK Native Loop & ZDR)
 - **Harness Layer**: `agents/harness.py` (GenAI SDK Abstraction)
-- **Security Layer**: `tools/policy_engine.py` (SRE Interception)
+- **Security Layer**: `tools/policy_engine.py` (SRE Interception & Validation)
 
 ---
 
@@ -34,14 +34,27 @@
 ├── agents/              # 핵심 로직 (Ralph Loop, Harness)
 │   ├── .env             # [비공개] 로컬 테스트용 환경 변수 (사용자 생성)
 │   ├── agent.py         # ADK 에이전트 정의 (Entry Point)
-│   └── agent_engine_app.py # [자동생성] Agent Engine 서버 래퍼
+│   ├── harness.py       # 모델 호출 추상화 클래스
+│   └── ralph_loop.py    # 상태 관리 및 ZDR 로직
 ├── ci-cd/               # 배포 자동화
 │   ├── cloudbuild.yaml  # CI/CD 파이프라인
 │   └── package_for_terraform.sh # 아티팩트 빌드 스크립트
 ├── eval/                # 평가 (Golden Dataset)
+│   └── run_eval.py
 ├── infra/               # Terraform IaC 정의
+│   ├── main.tf          # Terraform 프로비저닝 스크립트
+│   └── memory_bank_config.py # 메모리 뱅크 설정
+├── policies/            # 거버넌스 및 보안 정책 (Policy Engine 룰셋 등)
+├── prompts/             # 시스템 인스트럭션 및 프롬프트 템플릿
+│   └── system_instruction.txt
 ├── tools/               # 도구 연동 및 보안 (MCP, Policy)
+│   ├── grounding.py     # RAG 연동
+│   ├── mcp_client.py    # Remote MCP 연동
+│   └── policy_engine.py # SRE Interception Layer
 ├── .env.example         # 환경 변수 템플릿
+├── .gitignore           # Git 제외 규칙
+├── pyproject.toml       # 패키지 빌드 설정
+├── requirements.txt     # Python 의존성 목록
 └── README.md            # 본 가이드
 ```
 
